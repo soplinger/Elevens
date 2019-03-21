@@ -14,5 +14,7 @@ public class DeckTester {
 
         Deck cholonk = new Deck(aR, aS, aV);
         System.out.println(cholonk.toString());
+
+
     }
 }
