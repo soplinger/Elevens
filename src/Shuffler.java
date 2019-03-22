@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -50,9 +52,20 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-	}
 
+		int[] cards = new int[52]
+		int[] shuffled = new int[52];
+		int k = 0;
+		for (int j = 0; j < 25; j++) {
+			cards[j] = shuffled[k];
+			k += 2;
+		}
+			k = 1;
+		for (int j = 26; k < 51 ; k++) {
+			cards[j] = shuffled[k];
+			k += 2;
+		}
+	}
 	/**
 	 * Apply an "efficient selection shuffle" to the argument.
 	 * The selection shuffle algorithm conceptually maintains two sequences
@@ -65,22 +78,17 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-
-		int inBetween = values.length;
-		int[] values1 = new int[inBetween];
-		int[] values2 = new int[inBetween];
-		int[] shuffledDeck = new int[values.length];
-		for (int i = 0; i < inBetween; i++) {
-			values2[i] = values[i];
+		Random rand1 = new Random();
+		int temp;
+		int[] cards = new int[52];
+		int[] shuffled = new int[52];
+		for (int k = 51; k > 1; k--) {
+			int r = rand1.nextInt(k);
+			temp = cards[k];
+			cards[r] = cards[k];
+			cards[]
 		}
 
-		for (int i = 0; i < values.length / 2; i++) {
-			if (i % 2 == 0)
-				shuffledDeck[i] = values1[i];
-			else
-				shuffledDeck[i] = values2[i];
+			}
+
 		}
-
-
-	}
-}

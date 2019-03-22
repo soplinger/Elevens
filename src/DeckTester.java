@@ -12,6 +12,7 @@ public class DeckTester {
         String aR[] = {"Big", "Huge", "Jake", "Eek"};
         int aV[] = {1, 2, 3, 4};
 
+
         Deck cholonk = new Deck(aR, aS, aV);
         System.out.println(cholonk.toString());
 
