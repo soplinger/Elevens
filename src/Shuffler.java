@@ -53,7 +53,7 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 
-		int[] cards = new int[52]
+		int[] cards = new int[52];
 		int[] shuffled = new int[52];
 		int k = 0;
 		for (int j = 0; j < 25; j++) {
@@ -85,10 +85,11 @@ public class Shuffler {
 		for (int k = 51; k > 1; k--) {
 			int r = rand1.nextInt(k);
 			temp = cards[k];
-			cards[r] = cards[k];
-			cards[]
+			cards[k] = cards[r];
+			cards[r] = temp;
 		}
 
-			}
+	}
 
-		}
+
+}

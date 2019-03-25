@@ -1,6 +1,6 @@
-import java.lang.reflect.Array;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * The Deck class represents a shuffled deck of cards.
@@ -12,7 +12,7 @@ public class Deck {
     /**
      * cards contains all the cards in the deck.
      */
-    private ArrayList<Card> cards = new ArrayList<Card>();
+    private List<Card> cards;
 
     /**
      * size is the number of not-yet-dealt cards.
@@ -31,15 +31,14 @@ public class Deck {
      * @param values is an array containing all of the card point values.
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
-        ArrayList<Card> cardList = new ArrayList<Card>();
-
-        for (int i = 0; i < suits.length; i++) {
-            for (int j = 0; j < ranks.length; j++) {
-                Card temp = new Card(suits[i], ranks[j], values[i]);
-                cards.add(temp);
+        cards = new ArrayList<Card>();
+        for (int j = 0; j < ranks.length; j++) {
+            for (String suitString : suits) {
+                cards.add(new Card(ranks[j], suitString, values[j]));
             }
         }
         size = cards.size();
+        shuffle();
     }
 
 
@@ -48,10 +47,7 @@ public class Deck {
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
-        if (cards.isEmpty())
-            return true;
-        else
-            return false;
+        return size == 0;
     }
 
     /**
@@ -59,7 +55,7 @@ public class Deck {
      * @return the number of undealt cards in this deck.
      */
     public int size() {
-        return cards.size();
+        return size;
     }
 
     /**
@@ -67,7 +63,16 @@ public class Deck {
      * and reset the size to represent the entire deck.
      */
     public void shuffle() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+        Random rand1 = new Random();
+        int temp;
+        int[] cards = new int[52];
+        int[] shuffled = new int[52];
+        for (int k = 51; k > 1; k--) {
+            int r = rand1.nextInt(k);
+            temp = cards[k];
+            cards[k] = cards[r];
+            cards[r] = temp;
+        }
     }
 
     /**
@@ -76,7 +81,12 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-        return cards.remove(cards.size() - 1);
+        if (isEmpty()) {
+            return null;
+        }
+        size--;
+        Card c = cards.get(size);
+        return c;
     }
 
     /**
